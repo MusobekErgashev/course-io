@@ -81,15 +81,15 @@
     padding-bottom: 30px;
 }
 
-.section2 .container {
+.section2 .container{
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
 }
 
-.section2Title {
-    font-size: 24px;
+.sectionTitle {
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -101,7 +101,7 @@
 
 .navLinks {
     color: black;
-    font-size: 1rem;
+    font-size: 18px;
     position: relative;
     font-weight: 400;
 }
@@ -237,4 +237,84 @@
     font-size: 1rem;
     font-weight: 700;
     border-radius: 3px;
+}
+
+.courseCardSubTitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(27, 27, 27, 0.9);
+}
+
+.courseCards:nth-child(1) {
+    grid-template-columns: 1fr 1fr;
+}
+
+.section3 .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.section3Main {    
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px;
+}
+
+.section3LeftSide {
+    background-image: url("../../assets/trending-course.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 36px;
+    padding: 32px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.section3UserName {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.section3UserTitle {
+    font-size: 44px;
+    font-weight: 700;
+}
+
+.section4 .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.section5 {
+    width: 100%;
+    background-color: #FFEC8A;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.section5Title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.section5Btn {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid rgba(27, 27, 27, 0.6);
+    font-weight: 700;
+    color: rgba(27, 27, 27, 0.6);
+    cursor: pointer;
 }

@@ -7,21 +7,32 @@ import halfStarIcon from "../../assets/star-half.png"
 import bigOfferImg from "../../assets/join-klevr.png"
 
 const Home = () => {
-  const [data, setData] = useState([])
+  const [myCourseData, setMyCourseData] = useState([])
+  const [myTrendingCourseData, setMyTrendingCourseData] = useState([])
+  const [myUpcomingWebinarData, setMyUpcomingWebinarData] = useState([])
 
   useEffect(() => {
     async function getCourses() {
-      try {
-        const res = await fetch('/db.json')
-        if (!res.ok) throw new Error(`Fetch failed: ${res.status} ${res.statusText}`)
-        const json = await res.json()
-        setData(json.courseData || [])
-      } catch (err) {
-        console.error('Failed to load course data:', err)
-      }
+      const res = await fetch('/db.json')
+      const json = await res.json()
+      setMyCourseData(json.courseData || [])
+    }
+
+    async function getTrendingCourses() {
+      const res = await fetch('/db.json')
+      const json = await res.json()
+      setMyTrendingCourseData(json.trendingCourse || [])
+    }
+
+    async function getUpcomingWebinar() {
+      const res = await fetch('/db.json')
+      const json = await res.json()
+      setMyUpcomingWebinarData(json.upcomingWebinar || [])
     }
 
     getCourses()
+    getTrendingCourses()
+    getUpcomingWebinar()
   }, [])
 
   return (
@@ -47,7 +58,7 @@ const Home = () => {
         <div className="main-container">
           <div className="container">
             <div className={styles.container}>
-              <h3 className={styles.section2Title}>Browse Our Top Courses</h3>
+              <h3 className={styles.sectionTitle}>Browse Our Top Courses</h3>
 
               <ul className={styles.navigation}>
                 <a href="#">
@@ -68,7 +79,7 @@ const Home = () => {
               </ul>
 
               <ul className={styles.courseCards}>
-                {data.map((myData, index) => {
+                {myCourseData.map((myData, index) => {
                   return (
                     <li className={styles.courseCardItems} key={index}>
                       <div className={styles.courseCardImgBox}>
@@ -96,31 +107,6 @@ const Home = () => {
                     </li>
                   )
                 })}
-
-                {/* <li className={styles.courseCardItems}>
-                  <div className={styles.courseCardImgBox}>
-                    <img src="https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg" alt="card" className={styles.courseCardImg} />
-                  </div>
-                  <h5 className={styles.courseCardTitle}>Adobe Illustrator Scretch Course</h5>
-                  <span className={styles.courseCardUserBox}>
-                    <img src={userIcon} alt="" />
-                    <p className={styles.courseCardUserName}>Kitani Studio</p>
-                  </span>
-                  <span className={styles.courseCardRating}>
-                    <img src={starIcon} alt="" />
-                    <img src={starIcon} alt="" />
-                    <img src={starIcon} alt="" />
-                    <img src={starIcon} alt="" />
-                    <img src={starIcon} alt="" />
-
-                    <p>(1.2K)</p>
-                  </span>
-
-                  <span className={styles.courseCardPriceBox}>
-                    <h4 className={styles.courseCardPrice}>$24.92</h4>
-                    <p className={styles.courseCardUnPrice}>$32.90</p>
-                  </span>
-                </li> */}
               </ul>
 
               <div className={styles.bigOffer}>
@@ -138,6 +124,104 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={styles.section3}>
+        <div className="main-container">
+          <div className="container">
+            <div className={styles.container}>
+              <h1 className={styles.sectionTitle}>Trending Courses</h1>
+
+              <div className={styles.section3Main}>
+                <div className={styles.section3LeftSide}>
+                  <h4 className={styles.section3UserName}>Ana Kursova</h4>
+                  <h1 className={styles.section3UserTitle}>Masterclass in Design Thinking, Innovation & Creativity</h1>
+                </div>
+
+                <div className={styles.section3RightSide}>
+                  <ul className={styles.courseCards}>
+                    {myTrendingCourseData.map((myData, index) => {
+                      return (
+                        <li className={styles.courseCardItems} key={index}>
+                          <div className={styles.courseCardImgBox}>
+                            <img src={myData.img} alt="card" className={styles.courseCardImg} />
+                          </div>
+                          <h5 className={styles.courseCardTitle}>{myData.title}</h5>
+                          <span className={styles.courseCardUserBox}>
+                            <img src={userIcon} alt="" />
+                            <p className={styles.courseCardUserName}>{myData.username}</p>
+                          </span>
+                          <p className={styles.courseCardSubTitle}>{myData.subTitle}</p>
+                          <span className={styles.courseCardRating}>
+                            <img src={starIcon} alt="" />
+                            <img src={starIcon} alt="" />
+                            <img src={starIcon} alt="" />
+                            <img src={starIcon} alt="" />
+                            <img src={starIcon} alt="" />
+
+                            <p>(1.2K)</p>
+                          </span>
+
+                          <span className={styles.courseCardPriceBox}>
+                            <h4 className={styles.courseCardPrice}>${myData.price}</h4>
+                            <p className={styles.courseCardUnPrice}>${myData.unPrice}</p>
+                          </span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.section4}>
+        <div className="main-container">
+          <div className="container">
+            <div className={styles.container}>
+              <h1 className={styles.sectionTitle}>Upcoming Webinar</h1>
+
+              <ul className={styles.courseCards}>
+                {myUpcomingWebinarData.map((myData, index) => {
+                  return (
+                    <li className={styles.courseCardItems} key={index}>
+                      <div className={styles.courseCardImgBox}>
+                        <img src={myData.img} alt="card" className={styles.courseCardImg} />
+                      </div>
+                      <h5 className={styles.courseCardTitle}>{myData.title}</h5>
+                      <span className={styles.courseCardUserBox}>
+                        <img src={userIcon} alt="" />
+                        <p className={styles.courseCardUserName}>{myData.username}</p>
+                      </span>
+                      <p className={styles.courseCardSubTitle}>{myData.subTitle}</p>
+                      <span className={styles.courseCardRating}>
+                        <img src={starIcon} alt="" />
+                        <img src={starIcon} alt="" />
+                        <img src={starIcon} alt="" />
+                        <img src={starIcon} alt="" />
+                        <img src={starIcon} alt="" />
+
+                        <p>(1.2K)</p>
+                      </span>
+
+                      <span className={styles.courseCardPriceBox}>
+                        <h4 className={styles.courseCardPrice}>${myData.price}</h4>
+                        <p className={styles.courseCardUnPrice}>${myData.unPrice}</p>
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.section5}>
+        <h1 className={styles.section5Title}>Get personal learning recommendations based on your needs</h1>
+        <button className={styles.section5Btn}>Get Started</button>
       </div>
     </React.Fragment >
   )
