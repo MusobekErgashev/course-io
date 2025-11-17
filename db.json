@@ -1,0 +1,36 @@
+{
+    "courseData": [
+        {
+            "img": "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+            "title": "Adobe Illustrator Scretch Course",
+            "username": "Kitani Studio",
+            "rating": 4.5,
+            "price": 24.92,
+            "unPrice": 50.38
+        },
+        {
+            "img": "https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg",
+            "title": "Adobe Photoshop Scretch Course",
+            "username": "Kitani Studio",
+            "rating": 4.5,
+            "price": 33.15,
+            "unPrice": 50.38
+        },
+        {
+            "img": "https://png.pngtree.com/thumb_back/fh260/background/20240421/pngtree-stunning-4k-image-showcasing-the-beauty-of-nature-image_15718240.jpg",
+            "title": "Adobe After Effects Scretch Course",
+            "username": "Kitani Studio",
+            "rating": 4.5,
+            "price": 29.23,
+            "unPrice": 50.38
+        },
+        {
+            "img": "https://huggingface.co/datasets/huggingfacejs/tasks/resolve/main/image-segmentation/image-segmentation-input.jpeg",
+            "title": "Adobe Premiere Pro Scretch Course",
+            "username": "Kitani Studio",
+            "rating": 4.5,
+            "price": 42.01,
+            "unPrice": 50.38
+        }
+    ]
+}
